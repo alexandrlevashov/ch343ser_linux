@@ -2037,9 +2037,9 @@ next_desc:
 		return minor;
 	}
 
-	ctrlsize = usb_endpoint_maxp(epctrl);
-	readsize = usb_endpoint_maxp(epread);
-	ch343->writesize = usb_endpoint_maxp(epwrite) * 20;
+	ctrlsize = usb_endpoint_maxp(epctrl) * 100; // вроде не влияет но на всякий случай
+ 	readsize = usb_endpoint_maxp(epread) * 2000; //AL множителя не было
+	ch343->writesize = usb_endpoint_maxp(epwrite) * 2000; // AL было 20 - вроде на больших множителях чуть быстрее работает
 	ch343->control = control_interface;
 	ch343->data = data_interface;
 	ch343->minor = minor;
